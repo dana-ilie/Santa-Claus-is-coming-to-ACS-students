@@ -1,0 +1,164 @@
+{
+  "annualChildren" : [ {
+    "children" : [ {
+      "id" : 0,
+      "lastName" : "Popescu",
+      "firstName" : "Matei",
+      "age" : 14,
+      "city" : "Timisoara",
+      "giftsPreferences" : [ "Board Games", "Toys", "Technology" ],
+      "averageScore" : 5.0,
+      "niceScoreHistory" : [ 5.0 ],
+      "assignedBudget" : 60.0,
+      "receivedGifts" : [ {
+        "productName" : "Puzzle",
+        "price" : 50.0,
+        "category" : "Board Games"
+      }, {
+        "productName" : "Teddy Bear",
+        "price" : 5.0,
+        "category" : "Toys"
+      } ]
+    }, {
+      "id" : 1,
+      "lastName" : "Mihalache",
+      "firstName" : "Tudor",
+      "age" : 9,
+      "city" : "Bucuresti",
+      "giftsPreferences" : [ "Sweets" ],
+      "averageScore" : 5.0,
+      "niceScoreHistory" : [ 5.0 ],
+      "assignedBudget" : 60.0,
+      "receivedGifts" : [ ]
+    }, {
+      "id" : 2,
+      "lastName" : "Pop",
+      "firstName" : "Diana",
+      "age" : 3,
+      "city" : "Cluj-Napoca",
+      "giftsPreferences" : [ "Books", "Clothes", "Toys" ],
+      "averageScore" : 10.0,
+      "niceScoreHistory" : [ 2.0 ],
+      "assignedBudget" : 120.0,
+      "receivedGifts" : [ {
+        "productName" : "Diary of a Wimpy Kid",
+        "price" : 25.0,
+        "category" : "Books"
+      }, {
+        "productName" : "Dress",
+        "price" : 45.0,
+        "category" : "Clothes"
+      }, {
+        "productName" : "Teddy Bear",
+        "price" : 5.0,
+        "category" : "Toys"
+      } ]
+    } ]
+  }, {
+    "children" : [ {
+      "id" : 0,
+      "lastName" : "Popescu",
+      "firstName" : "Matei",
+      "age" : 15,
+      "city" : "Timisoara",
+      "giftsPreferences" : [ "Board Games", "Toys", "Technology" ],
+      "averageScore" : 5.0,
+      "niceScoreHistory" : [ 5.0, 5.0 ],
+      "assignedBudget" : 57.142857142857146,
+      "receivedGifts" : [ {
+        "productName" : "Puzzle",
+        "price" : 50.0,
+        "category" : "Board Games"
+      }, {
+        "productName" : "Teddy Bear",
+        "price" : 5.0,
+        "category" : "Toys"
+      } ]
+    }, {
+      "id" : 1,
+      "lastName" : "Mihalache",
+      "firstName" : "Tudor",
+      "age" : 10,
+      "city" : "Bucuresti",
+      "giftsPreferences" : [ "Sweets" ],
+      "averageScore" : 6.0,
+      "niceScoreHistory" : [ 5.0, 7.0 ],
+      "assignedBudget" : 68.57142857142857,
+      "receivedGifts" : [ ]
+    }, {
+      "id" : 2,
+      "lastName" : "Pop",
+      "firstName" : "Diana",
+      "age" : 4,
+      "city" : "Cluj-Napoca",
+      "giftsPreferences" : [ "Books", "Clothes", "Toys" ],
+      "averageScore" : 10.0,
+      "niceScoreHistory" : [ 2.0, 6.0 ],
+      "assignedBudget" : 114.28571428571429,
+      "receivedGifts" : [ {
+        "productName" : "Diary of a Wimpy Kid",
+        "price" : 25.0,
+        "category" : "Books"
+      }, {
+        "productName" : "Dress",
+        "price" : 45.0,
+        "category" : "Clothes"
+      }, {
+        "productName" : "Teddy Bear",
+        "price" : 5.0,
+        "category" : "Toys"
+      } ]
+    } ]
+  }, {
+    "children" : [ {
+      "id" : 0,
+      "lastName" : "Popescu",
+      "firstName" : "Matei",
+      "age" : 16,
+      "city" : "Timisoara",
+      "giftsPreferences" : [ "Board Games", "Toys", "Technology" ],
+      "averageScore" : 7.5,
+      "niceScoreHistory" : [ 5.0, 5.0, 10.0 ],
+      "assignedBudget" : 100.93457943925235,
+      "receivedGifts" : [ {
+        "productName" : "Puzzle",
+        "price" : 50.0,
+        "category" : "Board Games"
+      }, {
+        "productName" : "Teddy Bear",
+        "price" : 5.0,
+        "category" : "Toys"
+      } ]
+    }, {
+      "id" : 1,
+      "lastName" : "Mihalache",
+      "firstName" : "Tudor",
+      "age" : 11,
+      "city" : "Bucuresti",
+      "giftsPreferences" : [ "Sweets" ],
+      "averageScore" : 5.0,
+      "niceScoreHistory" : [ 5.0, 7.0, 3.0 ],
+      "assignedBudget" : 67.28971962616824,
+      "receivedGifts" : [ ]
+    }, {
+      "id" : 2,
+      "lastName" : "Pop",
+      "firstName" : "Diana",
+      "age" : 5,
+      "city" : "Cluj-Napoca",
+      "giftsPreferences" : [ "Books", "Clothes", "Toys" ],
+      "averageScore" : 5.333333333333333,
+      "niceScoreHistory" : [ 2.0, 6.0, 8.0 ],
+      "assignedBudget" : 71.77570093457945,
+      "receivedGifts" : [ {
+        "productName" : "Diary of a Wimpy Kid",
+        "price" : 25.0,
+        "category" : "Books"
+      }, {
+        "productName" : "Dress",
+        "price" : 45.0,
+        "category" : "Clothes"
+      } ]
+    } ]
+  } ]
+}
