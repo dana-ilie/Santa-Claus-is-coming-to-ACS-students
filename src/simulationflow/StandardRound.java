@@ -4,6 +4,8 @@ import common.Constants;
 import database.Database;
 import entities.Gift;
 import factories.IChildFactory;
+import factories.SortStrategyFactory;
+import interfaces.ChildrenSortStrategy;
 import interfaces.IChild;
 import updates.AnnualChange;
 import updates.ChildUpdate;
@@ -38,14 +40,22 @@ public class StandardRound {
         /*
          * sort children list by id
          */
-        children.sort(Comparator.comparingInt(IChild::getId));
+        //children.sort(Comparator.comparingInt(IChild::getId));
         database.setChildren(children);
+        database.addChildrenToCities();
 
         /*
          * execute updates
          */
 
         database.setSantaBudget(update.getNewSantaBudget());
+
+        /*
+         * update the strategy
+         */
+        SortStrategyFactory factory = SortStrategyFactory.getSortStrategyFactory();
+        ChildrenSortStrategy strategy = factory.createStrategy(update.getStrategyType());
+        database.setSortStrategy(strategy);
 
         for (Gift newGift : update.getNewGifts()) {
             database.getSantaGiftsList().add(newGift);
@@ -55,6 +65,7 @@ public class StandardRound {
             if (newChild.getAge() <= Constants.TEEN_AGE_LIMIT) {
                 newChild.getNiceScoreHistory().add(newChild.getNiceScore());
                 database.getChildren().add(newChild);
+                database.addChildToCity(newChild);
             }
         }
 
@@ -70,6 +81,7 @@ public class StandardRound {
                     if (cUpdate.getNiceScore() != null) {
                         child.getNiceScoreHistory().add(cUpdate.getNiceScore());
                     }
+                    child.setElf(cUpdate.getElf());
 
                     /*
                      * delete old appearances of preferences

@@ -33,17 +33,23 @@ public final class IChildFactory {
      * @return a child instance
      */
     public IChild createChild(final Integer id, final String lastName,
-                                     final String firstName, final Integer age,
-                                     final String city, final Double niceScore,
-                                     final List<String> giftsPreferences) {
+                              final String firstName, final Integer age,
+                              final String city, final Double niceScore,
+                              final List<String> giftsPreferences,
+                              final Double niceScoreBonus,
+                              final String elf) {
         if (age < Constants.BABY_AGE_LIMIT) {
-            return new Baby(id, lastName, firstName, age, city, niceScore, giftsPreferences);
+            return new Baby(id, lastName, firstName, age, city, niceScore,
+                            giftsPreferences, niceScoreBonus, elf);
         } else if (age < Constants.KID_AGE_LIMIT) {
-            return new Kid(id, lastName, firstName, age, city, niceScore, giftsPreferences);
+            return new Kid(id, lastName, firstName, age, city, niceScore,
+                            giftsPreferences, niceScoreBonus, elf);
         } else if (age <= Constants.TEEN_AGE_LIMIT) {
-            return new Teen(id, lastName, firstName, age, city, niceScore, giftsPreferences);
+            return new Teen(id, lastName, firstName, age, city, niceScore,
+                            giftsPreferences, niceScoreBonus, elf);
         } else {
-            return new YoungAdult(id, lastName, firstName, age, city, niceScore, giftsPreferences);
+            return new YoungAdult(id, lastName, firstName, age, city, niceScore,
+                                  giftsPreferences, niceScoreBonus, elf);
         }
     }
 }

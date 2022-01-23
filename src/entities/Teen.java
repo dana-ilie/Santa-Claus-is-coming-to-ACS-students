@@ -19,11 +19,16 @@ public class Teen implements IChild {
     private List<Double> niceScoreHistory;
     private Double assignedBudget;
     private List<Gift> receivedGifts;
+    @JsonIgnore
+    private Double niceScoreBonus;
+    @JsonIgnore
+    private String elf;
 
     public Teen(final Integer id, final String lastName,
-                 final String firstName, final Integer age,
-                 final String city, final Double niceScore,
-                 final List<String> giftsPreferences) {
+                final String firstName, final Integer age,
+                final String city, final Double niceScore,
+                final List<String> giftsPreferences,
+                final Double niceScoreBonus, final String elf) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -35,6 +40,8 @@ public class Teen implements IChild {
         this.niceScoreHistory = new ArrayList<>();
         this.assignedBudget = 0.0;
         this.receivedGifts = new ArrayList<>();
+        this.niceScoreBonus = niceScoreBonus;
+        this.elf = elf;
     }
 
     /**
@@ -49,6 +56,10 @@ public class Teen implements IChild {
             weightSum += i + 1;
         }
         this.averageScore = scoreSum / weightSum;
+        this.averageScore += this.averageScore * niceScoreBonus / 100;
+        if (this.averageScore > 10.0) {
+            this.averageScore = 10.0;
+        }
     }
 
     @Override
@@ -79,7 +90,31 @@ public class Teen implements IChild {
                 + assignedBudget
                 + ", receivedGifts="
                 + receivedGifts
+                + ", niceScoreBonus="
+                + niceScoreBonus
+                + ", elf="
+                + elf
                 + '}';
+    }
+
+    @Override
+    public final Double getNiceScoreBonus() {
+        return niceScoreBonus;
+    }
+
+    @Override
+    public final void setNiceScoreBonus(final Double niceScoreBonus) {
+        this.niceScoreBonus = niceScoreBonus;
+    }
+
+    @Override
+    public final String getElf() {
+        return elf;
+    }
+
+    @Override
+    public final void setElf(final String elf) {
+        this.elf = elf;
     }
 
     @Override

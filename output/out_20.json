@@ -7,9 +7,9 @@
       "age" : 12,
       "city" : "Braila",
       "giftsPreferences" : [ "Toys", "Sweets" ],
-      "averageScore" : 9.0,
+      "averageScore" : 10.0,
       "niceScoreHistory" : [ 9.0 ],
-      "assignedBudget" : 669.0,
+      "assignedBudget" : 568.1528662420383,
       "receivedGifts" : [ {
         "productName" : "Bike",
         "price" : 25.0,
@@ -26,9 +26,9 @@
       "age" : 14,
       "city" : "Timisoara",
       "giftsPreferences" : [ "Board Games", "Technology", "Sweets", "Books" ],
-      "averageScore" : 3.0,
+      "averageScore" : 5.7,
       "niceScoreHistory" : [ 3.0 ],
-      "assignedBudget" : 223.0,
+      "assignedBudget" : 226.69299363057326,
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
@@ -51,9 +51,9 @@
       "age" : 13,
       "city" : "Braila",
       "giftsPreferences" : [ "Toys", "Sweets" ],
-      "averageScore" : 5.666666666666667,
+      "averageScore" : 7.366666666666667,
       "niceScoreHistory" : [ 9.0, 4.0 ],
-      "assignedBudget" : 303.28,
+      "assignedBudget" : 238.74117647058827,
       "receivedGifts" : [ {
         "productName" : "Bike",
         "price" : 25.0,
@@ -70,9 +70,9 @@
       "age" : 15,
       "city" : "Timisoara",
       "giftsPreferences" : [ "Board Games", "Sweets", "Technology", "Books" ],
-      "averageScore" : 1.0,
+      "averageScore" : 1.9,
       "niceScoreHistory" : [ 3.0, 0.0 ],
-      "assignedBudget" : 53.519999999999996,
+      "assignedBudget" : 61.5757785467128,
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
@@ -95,7 +95,7 @@
       "giftsPreferences" : [ "Board Games", "Toys", "Sweets", "Books" ],
       "averageScore" : 10.0,
       "niceScoreHistory" : [ 9.0 ],
-      "assignedBudget" : 535.1999999999999,
+      "assignedBudget" : 324.083044982699,
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
@@ -122,16 +122,12 @@
       "age" : 14,
       "city" : "Braila",
       "giftsPreferences" : [ "Toys", "Sweets" ],
-      "averageScore" : 7.333333333333333,
+      "averageScore" : 9.533333333333333,
       "niceScoreHistory" : [ 9.0, 4.0, 9.0 ],
-      "assignedBudget" : 338.3448275862069,
+      "assignedBudget" : 313.4054054054054,
       "receivedGifts" : [ {
-        "productName" : "Bike",
-        "price" : 25.0,
-        "category" : "Toys"
-      }, {
-        "productName" : "Gummy Bears",
-        "price" : 10.0,
+        "productName" : "Chocolate",
+        "price" : 15.0,
         "category" : "Sweets"
       } ]
     }, {
@@ -141,12 +137,12 @@
       "age" : 16,
       "city" : "Timisoara",
       "giftsPreferences" : [ "Sweets", "Books", "Board Games", "Technology" ],
-      "averageScore" : 4.0,
+      "averageScore" : 7.6,
       "niceScoreHistory" : [ 3.0, 0.0, 7.0 ],
-      "assignedBudget" : 184.55172413793105,
+      "assignedBudget" : 249.84766584766584,
       "receivedGifts" : [ {
-        "productName" : "Gummy Bears",
-        "price" : 10.0,
+        "productName" : "Chocolate",
+        "price" : 15.0,
         "category" : "Sweets"
       }, {
         "productName" : "Diary of a Wimpy Kid",
@@ -164,9 +160,9 @@
       "age" : 5,
       "city" : "Brasov",
       "giftsPreferences" : [ "Board Games", "Toys", "Sweets", "Books" ],
-      "averageScore" : 8.0,
+      "averageScore" : 10.0,
       "niceScoreHistory" : [ 9.0, 7.0 ],
-      "assignedBudget" : 369.1034482758621,
+      "assignedBudget" : 328.74692874692875,
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
@@ -176,8 +172,8 @@
         "price" : 25.0,
         "category" : "Toys"
       }, {
-        "productName" : "Gummy Bears",
-        "price" : 10.0,
+        "productName" : "Chocolate",
+        "price" : 15.0,
         "category" : "Sweets"
       }, {
         "productName" : "Diary of a Wimpy Kid",
@@ -193,20 +189,12 @@
       "age" : 15,
       "city" : "Braila",
       "giftsPreferences" : [ "Books", "Toys", "Sweets" ],
-      "averageScore" : 7.333333333333333,
+      "averageScore" : 9.533333333333333,
       "niceScoreHistory" : [ 9.0, 4.0, 9.0 ],
-      "assignedBudget" : 132.47596153846155,
+      "assignedBudget" : 84.57015177065767,
       "receivedGifts" : [ {
-        "productName" : "Diary of a Wimpy Kid",
-        "price" : 25.0,
-        "category" : "Books"
-      }, {
-        "productName" : "Bike",
-        "price" : 25.0,
-        "category" : "Toys"
-      }, {
-        "productName" : "Gummy Bears",
-        "price" : 10.0,
+        "productName" : "Chocolate",
+        "price" : 15.0,
         "category" : "Sweets"
       } ]
     }, {
@@ -216,12 +204,12 @@
       "age" : 17,
       "city" : "Timisoara",
       "giftsPreferences" : [ "Sweets", "Books", "Board Games", "Technology" ],
-      "averageScore" : 6.4,
+      "averageScore" : 10.0,
       "niceScoreHistory" : [ 3.0, 0.0, 7.0, 10.0 ],
-      "assignedBudget" : 115.61538461538463,
+      "assignedBudget" : 126.72849915682968,
       "receivedGifts" : [ {
-        "productName" : "Gummy Bears",
-        "price" : 10.0,
+        "productName" : "Chocolate",
+        "price" : 15.0,
         "category" : "Sweets"
       }, {
         "productName" : "Diary of a Wimpy Kid",
@@ -239,20 +227,16 @@
       "age" : 6,
       "city" : "Brasov",
       "giftsPreferences" : [ "Board Games", "Toys", "Sweets", "Books" ],
-      "averageScore" : 6.0,
+      "averageScore" : 10.0,
       "niceScoreHistory" : [ 9.0, 7.0, 2.0 ],
-      "assignedBudget" : 108.38942307692308,
+      "assignedBudget" : 88.70994940978078,
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
         "category" : "Board Games"
       }, {
-        "productName" : "Bike",
-        "price" : 25.0,
-        "category" : "Toys"
-      }, {
-        "productName" : "Gummy Bears",
-        "price" : 10.0,
+        "productName" : "Chocolate",
+        "price" : 15.0,
         "category" : "Sweets"
       }, {
         "productName" : "Diary of a Wimpy Kid",
@@ -266,14 +250,10 @@
       "age" : 8,
       "city" : "Brasov",
       "giftsPreferences" : [ "Toys" ],
-      "averageScore" : 8.0,
+      "averageScore" : 10.0,
       "niceScoreHistory" : [ 8.0 ],
-      "assignedBudget" : 144.51923076923077,
-      "receivedGifts" : [ {
-        "productName" : "Bike",
-        "price" : 25.0,
-        "category" : "Toys"
-      } ]
+      "assignedBudget" : 164.74704890387858,
+      "receivedGifts" : [ ]
     } ]
   } ]
 }

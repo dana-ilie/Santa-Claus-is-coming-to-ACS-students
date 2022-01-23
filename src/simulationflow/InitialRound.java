@@ -2,6 +2,7 @@ package simulationflow;
 
 import common.Constants;
 import database.Database;
+import entities.City;
 import entities.Gift;
 import interfaces.IChild;
 
@@ -25,6 +26,13 @@ public class InitialRound {
         }
 
         /*
+         * calculate niceScoreCity
+         */
+        for (City city : database.getAllCities()) {
+            city.calculateNiceScoreCity();
+        }
+
+        /*
          * calculate budget for each child
          */
         Double avgSum = 0.0;
@@ -36,6 +44,27 @@ public class InitialRound {
             Double budgetUnit = database.getSantaBudget() / avgSum;
             child.setAssignedBudget(child.getAverageScore() * budgetUnit);
         }
+
+        /*
+         * apply black and pink elf modifications
+         */
+
+        for (IChild child : database.getChildren()) {
+            if (child.getElf().equals("black")) {
+                Double budget = child.getAssignedBudget();
+                budget = budget - budget * 30 / 100;
+                child.setAssignedBudget(budget);
+            } else if (child.getElf().equals("pink")) {
+                Double budget = child.getAssignedBudget();
+                budget = budget + budget * 30 / 100;
+                child.setAssignedBudget(budget);
+            }
+        }
+
+        /*
+         * apply strategy
+         */
+        database.getSortStrategy().sortChildren(database);
 
         /*
          * assign presents
@@ -56,16 +85,19 @@ public class InitialRound {
                  * from gPreference category
                  */
 
-                Gift cheapestFromCategory = new Gift("cheapest", Constants.MIN_PRICE, "category");
+                Gift cheapestFromCategory = new Gift("cheapest", Constants.MIN_PRICE,
+                        "category", -1);
                 Double minPrice = Constants.MIN_PRICE;
                 boolean found = false;
 
                 for (Gift santaGift : database.getSantaGiftsList()) {
                     if (santaGift.getCategory().equals(gPreference)) {
-                        found = true;
-                        if (santaGift.getPrice() < minPrice) {
-                            cheapestFromCategory = santaGift;
-                            minPrice = santaGift.getPrice();
+                        if (santaGift.getQuantity() > 0) {
+                            found = true;
+                            if (santaGift.getPrice() < minPrice) {
+                                cheapestFromCategory = santaGift;
+                                minPrice = santaGift.getPrice();
+                            }
                         }
                     }
                 }
@@ -82,6 +114,51 @@ public class InitialRound {
                          * assign gift to child
                          */
                         assignedBudget -= cheapestFromCategory.getPrice();
+                        cheapestFromCategory.setQuantity(cheapestFromCategory.getQuantity() - 1);
+                        child.getReceivedGifts().add(cheapestFromCategory);
+                    }
+                }
+            }
+        }
+
+        /*
+         * apply yellow elf modifications
+         */
+        for (IChild child : database.getChildren()) {
+            if (child.getElf().equals("yellow")) {
+                /*
+                 * check if the child received a gift
+                 */
+                if (child.getReceivedGifts().size() == 0) {
+                    String gPreference = child.getGiftsPreferences().get(0);
+                    /*
+                     * find the cheapest gift in santaGiftsList
+                     * from gPreference category
+                     */
+
+                    Gift cheapestFromCategory = new Gift("cheapest", Constants.MIN_PRICE,
+                            "category", -1);
+                    Double minPrice = Constants.MIN_PRICE;
+                    boolean found = false;
+
+                    for (Gift santaGift : database.getSantaGiftsList()) {
+                        if (santaGift.getCategory().equals(gPreference)) {
+                            found = true;
+                            if (santaGift.getPrice() < minPrice) {
+                                cheapestFromCategory = santaGift;
+                                minPrice = santaGift.getPrice();
+                            }
+                        }
+                    }
+
+                    /*
+                     * if a gift was found and is in stock
+                     */
+                    if (found && cheapestFromCategory.getQuantity() > 0) {
+                        /*
+                         * assign gift to child
+                         */
+                        cheapestFromCategory.setQuantity(cheapestFromCategory.getQuantity() - 1);
                         child.getReceivedGifts().add(cheapestFromCategory);
                     }
                 }

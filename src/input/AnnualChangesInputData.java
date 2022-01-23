@@ -6,15 +6,18 @@ public class AnnualChangesInputData {
     private final List<SantaGiftsInputData> newGifts;
     private List<ChildrenInputData> newChildren;
     private List<ChildUpdateInputData> childrenUpdates;
+    private String strategyType;
 
     public AnnualChangesInputData(final Double newSantaBudget,
-                        final List<SantaGiftsInputData> newGifts,
-                        final List<ChildrenInputData> newChildren,
-                        final List<ChildUpdateInputData> childrenUpdates) {
+                                  final List<SantaGiftsInputData> newGifts,
+                                  final List<ChildrenInputData> newChildren,
+                                  final List<ChildUpdateInputData> childrenUpdates,
+                                  final String strategyType) {
         this.newSantaBudget = newSantaBudget;
         this.newGifts = newGifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.strategyType = strategyType;
     }
 
 
@@ -41,6 +44,14 @@ public class AnnualChangesInputData {
 
     public final void setChildrenUpdates(final List<ChildUpdateInputData> childrenUpdates) {
         this.childrenUpdates = childrenUpdates;
+    }
+
+    public String getStrategyType() {
+        return strategyType;
+    }
+
+    public void setStrategyType(String strategyType) {
+        this.strategyType = strategyType;
     }
 
     @Override

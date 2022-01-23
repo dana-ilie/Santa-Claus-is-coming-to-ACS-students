@@ -4,13 +4,16 @@ public class SantaGiftsInputData {
     private String productName;
     private Double price;
     private String category;
+    private Integer quantity;
 
     public SantaGiftsInputData(final String productName,
                                final Double price,
-                               final String category) {
+                               final String category,
+                               final Integer quantity) {
         this.productName = productName;
         this.price = price;
         this.category = category;
+        this.quantity = quantity;
     }
 
     public final String getProductName() {
@@ -35,6 +38,14 @@ public class SantaGiftsInputData {
 
     public final void setCategory(final String category) {
         this.category = category;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     @Override

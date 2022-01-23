@@ -38,7 +38,8 @@ public final class Utils {
                 finalArray.add(new SantaGiftsInputData(
                         (String) ((JSONObject) jsonGift).get("productName"),
                         ((Long) ((JSONObject) jsonGift).get("price")).doubleValue(),
-                        (String) ((JSONObject) jsonGift).get("category")
+                        (String) ((JSONObject) jsonGift).get("category"),
+                        ((Long) ((JSONObject) jsonGift).get("quantity")).intValue()
                 ));
             }
             return finalArray;
@@ -63,7 +64,9 @@ public final class Utils {
                         (String) ((JSONObject) jsonChild).get("city"),
                         ((Long) ((JSONObject) jsonChild).get("niceScore")).doubleValue(),
                         Utils.convertJSONArray((JSONArray) ((JSONObject) jsonChild)
-                                .get("giftsPreferences"))
+                                .get("giftsPreferences")),
+                        ((Long) ((JSONObject) jsonChild).get("niceScoreBonus")).doubleValue(),
+                        (String) ((JSONObject) jsonChild).get("elf")
                 ));
             }
             return finalArray;
@@ -93,8 +96,9 @@ public final class Utils {
                         ((Long) ((JSONObject) jsonChildUpdate).get("id")).intValue(),
                         niceScore,
                         Utils.convertJSONArray((JSONArray) ((JSONObject) jsonChildUpdate)
-                                .get("giftsPreferences"))
-                ));
+                                .get("giftsPreferences")),
+                        (String) ((JSONObject) jsonChildUpdate).get("elf")
+                        ));
             }
             return finalArray;
         } else {

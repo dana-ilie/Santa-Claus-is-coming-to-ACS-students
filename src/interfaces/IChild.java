@@ -120,4 +120,24 @@ public interface IChild {
      */
     void setReceivedGifts(List<Gift> receivedGifts);
 
+    /**
+     * @return nice score bonus
+     */
+    Double getNiceScoreBonus();
+
+    /**
+     * @param niceScoreBonus nice score bonus to be set
+     */
+    void setNiceScoreBonus(final Double niceScoreBonus);
+
+    /**
+     * @return type of elf
+     */
+    String getElf();
+
+    /**
+     * @param elf type of elf
+     */
+    void setElf(final String elf);
+
 }

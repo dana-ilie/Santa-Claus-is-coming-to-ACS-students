@@ -10,15 +10,18 @@ public class AnnualChange {
     private List<Gift> newGifts;
     private List<IChild> newChildren;
     private List<ChildUpdate> childrenUpdates;
+    private String strategyType;
 
     public AnnualChange(final Double newSantaBudget,
                         final List<Gift> newGifts,
                         final List<IChild> newChildren,
-                        final List<ChildUpdate> childrenUpdates) {
+                        final List<ChildUpdate> childrenUpdates,
+                        final String strategyType) {
         this.newSantaBudget = newSantaBudget;
         this.newGifts = newGifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.strategyType = strategyType;
     }
 
     @Override
@@ -65,5 +68,13 @@ public class AnnualChange {
 
     public final void setChildrenUpdates(final List<ChildUpdate> childrenUpdates) {
         this.childrenUpdates = childrenUpdates;
+    }
+
+    public String getStrategyType() {
+        return strategyType;
+    }
+
+    public void setStrategyType(String strategyType) {
+        this.strategyType = strategyType;
     }
 }

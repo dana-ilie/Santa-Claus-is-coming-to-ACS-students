@@ -5,12 +5,15 @@ public class ChildUpdate {
     private Integer id;
     private Double niceScore;
     private List<String> giftsPreferences;
+    private String elf;
 
     public ChildUpdate(final Integer id, final Double niceScore,
-                        final List<String> giftsPreferences) {
+                       final List<String> giftsPreferences,
+                       final String elf) {
         this.id = id;
         this.niceScore = niceScore;
         this.giftsPreferences = giftsPreferences;
+        this.elf = elf;
     }
 
     public final Integer getId() {
@@ -35,6 +38,14 @@ public class ChildUpdate {
 
     public final void setGiftsPreferences(final List<String> giftsPreferences) {
         this.giftsPreferences = giftsPreferences;
+    }
+
+    public String getElf() {
+        return elf;
+    }
+
+    public void setElf(String elf) {
+        this.elf = elf;
     }
 
 }

@@ -1,17 +1,22 @@
 package database;
 
+import entities.City;
 import entities.Gift;
 import factories.IChildFactory;
+import factories.SortStrategyFactory;
 import input.Input;
 import input.ChildUpdateInputData;
 import input.ChildrenInputData;
 import input.SantaGiftsInputData;
 import input.AnnualChangesInputData;
+import interfaces.ChildrenSortStrategy;
 import interfaces.IChild;
+import org.checkerframework.checker.units.qual.C;
 import updates.AnnualChange;
 import updates.ChildUpdate;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public final class Database {
@@ -22,6 +27,8 @@ public final class Database {
     private List<Gift> santaGiftsList;
     private List<AnnualChange> annualChanges;
     private final List<List<IChild>> resultsList;
+    private ChildrenSortStrategy sortStrategy;
+    private List<City> allCities;
 
     private Database(final Input input) {
         IChildFactory childFactory = IChildFactory.getIChildFactory();
@@ -33,20 +40,27 @@ public final class Database {
         this.numberOfYears = input.getNumberOfYears();
         this.santaBudget = input.getSantaBudget();
 
+        SortStrategyFactory factory = SortStrategyFactory.getSortStrategyFactory();
+        this.sortStrategy = factory.createStrategy("id");
+
         for (ChildrenInputData child : input.getChildren()) {
             children.add(childFactory.createChild(child.getId(),
                     child.getLastName(), child.getFirstName(),
                     child.getAge(), child.getCity(), child.getNiceScore(),
-                    child.getGiftsPreferences()));
+                    child.getGiftsPreferences(), child.getNiceScoreBonus(),
+                    child.getElf()));
         }
 
         for (IChild child : children) {
             child.getNiceScoreHistory().add(child.getNiceScore());
         }
 
+        addChildrenToCities();
+
         for (SantaGiftsInputData gift : input.getSantaGiftsList()) {
             santaGiftsList.add(new Gift(gift.getProductName(),
-                    gift.getPrice(), gift.getCategory()));
+                    gift.getPrice(), gift.getCategory(),
+                    gift.getQuantity()));
         }
 
         for (AnnualChangesInputData change : input.getAnnualChanges()) {
@@ -55,25 +69,66 @@ public final class Database {
             List<ChildUpdate> childrenUpdates = new ArrayList<>();
 
             for (SantaGiftsInputData gift : change.getNewGifts()) {
-                newGifts.add(new Gift(gift.getProductName(), gift.getPrice(),
-                        gift.getCategory()));
+                newGifts.add(new Gift(gift.getProductName(),
+                        gift.getPrice(), gift.getCategory(),
+                        gift.getQuantity()));
             }
 
             for (ChildrenInputData child : change.getNewChildren()) {
                 newChildren.add(childFactory.createChild(child.getId(),
                         child.getLastName(), child.getFirstName(),
                         child.getAge(), child.getCity(), child.getNiceScore(),
-                        child.getGiftsPreferences()));
+                        child.getGiftsPreferences(), child.getNiceScoreBonus(),
+                        child.getElf()));
             }
 
             for (ChildUpdateInputData cUpdate : change.getChildrenUpdates()) {
                 childrenUpdates.add(new ChildUpdate(cUpdate.getId(),
-                        cUpdate.getNiceScore(), cUpdate.getGiftsPreferences()));
+                        cUpdate.getNiceScore(), cUpdate.getGiftsPreferences(),
+                        cUpdate.getElf()));
             }
 
             annualChanges.add(new AnnualChange(change.getNewSantaBudget(),
-                    newGifts, newChildren, childrenUpdates));
+                    newGifts, newChildren, childrenUpdates, change.getStrategyType()));
         }
+    }
+
+    public void addChildrenToCities() {
+        allCities = new ArrayList<>();
+        for (IChild child : children) {
+            addChildToCity(child);
+        }
+    }
+
+    public void addChildToCity(IChild child) {
+        boolean isInList = false;
+
+        for (City city : allCities) {
+            if (city.getName().equals(child.getCity())) {
+                isInList = true;
+                /*
+                 * add child to childrenFromCity list
+                 */
+                city.getChildrenFromCity().add(child);
+            }
+        }
+
+        if (!isInList) {
+            /*
+             * add city to cities list
+             */
+            allCities.add(new City(child.getCity()));
+            for (City city : allCities) {
+                if (city.getName().equals(child.getCity())) {
+                    city.getChildrenFromCity().add(child);
+                }
+            }
+        }
+
+        for (City city : allCities) {
+            city.calculateNiceScoreCity();
+        }
+
     }
 
     /**
@@ -97,6 +152,7 @@ public final class Database {
         for (IChild child : children) {
             addChild(childFactory, resultChildren, child);
         }
+        resultChildren.sort(Comparator.comparingInt(IChild::getId));
         resultsList.add(index, resultChildren);
     }
 
@@ -114,11 +170,13 @@ public final class Database {
         IChild copyChild = childFactory.createChild(child.getId(),
                 child.getLastName(), child.getFirstName(),
                 child.getAge(), child.getCity(), child.getNiceScore(),
-                giftPreferences);
+                giftPreferences, child.getNiceScoreBonus(), child.getElf());
         copyChild.setAverageScore(child.getAverageScore());
         copyChild.setNiceScoreHistory(niceScoreHistory);
         copyChild.setAssignedBudget(child.getAssignedBudget());
         copyChild.setReceivedGifts(child.getReceivedGifts());
+        copyChild.setNiceScoreBonus(child.getNiceScoreBonus());
+        copyChild.setElf(child.getElf());
 
         resultChildren.add(copyChild);
     }
@@ -140,6 +198,10 @@ public final class Database {
                 + ", resultsList="
                 + resultsList
                 + '}';
+    }
+
+    public List<City> getAllCities() {
+        return allCities;
     }
 
     public Integer getNumberOfYears() {
@@ -184,6 +246,14 @@ public final class Database {
 
     public void setAnnualChanges(final List<AnnualChange> annualChanges) {
         this.annualChanges = annualChanges;
+    }
+
+    public ChildrenSortStrategy getSortStrategy() {
+        return sortStrategy;
+    }
+
+    public void setSortStrategy(ChildrenSortStrategy sortStrategy) {
+        this.sortStrategy = sortStrategy;
     }
 
     /**

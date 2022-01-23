@@ -3,8 +3,10 @@ package main;
 import checker.Checker;
 import common.Constants;
 import database.Database;
+import factories.SortStrategyFactory;
 import input.Input;
 import input.InputLoader;
+import interfaces.ChildrenSortStrategy;
 import simulationflow.InitialRound;
 import simulationflow.StandardRound;
 import writer.Writer;
@@ -21,7 +23,7 @@ public final class Main {
      */
     public static void main(final String[] args) throws IOException {
 
-        for (int testNr = 1; testNr <= Constants.TESTS_NUMBER; testNr++) {
+        for (int testNr = 22; testNr <= Constants.TESTS_NUMBER; testNr++) {
             String inputPath = "tests/test" + testNr + ".json";
             String outputPath = "output/out_" + testNr + ".json";
 
@@ -31,6 +33,10 @@ public final class Main {
             Database database = Database.getDatabase(input);
             InitialRound initialRound = new InitialRound();
             StandardRound standardRound = new StandardRound();
+
+            ChildrenSortStrategy strategy = SortStrategyFactory.getSortStrategyFactory()
+                    .createStrategy("id");
+            database.setSortStrategy(strategy);
 
             initialRound.executeInitialRound(database);
             database.addResults(0);

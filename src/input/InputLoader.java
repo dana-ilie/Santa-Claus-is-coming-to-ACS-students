@@ -52,7 +52,10 @@ public class InputLoader {
                             Double.parseDouble(((JSONObject) jsonChild).get("niceScore")
                                     .toString()),
                             Utils.convertJSONArray((JSONArray) ((JSONObject) jsonChild)
-                                    .get("giftsPreferences"))
+                                    .get("giftsPreferences")),
+                            Double.parseDouble(((JSONObject) jsonChild).get("niceScoreBonus")
+                                    .toString()),
+                            (String) ((JSONObject) jsonChild).get("elf")
                     ));
                 }
             } else {
@@ -64,7 +67,8 @@ public class InputLoader {
                     santaGiftsList.add(new SantaGiftsInputData(
                             (String) ((JSONObject) jsonGift).get("productName"),
                             Double.parseDouble(((JSONObject) jsonGift).get("price").toString()),
-                            (String) ((JSONObject) jsonGift).get("category")
+                            (String) ((JSONObject) jsonGift).get("category"),
+                            Integer.parseInt(((JSONObject) jsonGift).get("quantity").toString())
                     ));
                 }
             } else {
@@ -81,7 +85,8 @@ public class InputLoader {
                             Utils.convertJSONNewChildren((JSONArray) ((JSONObject) jsonChange)
                                     .get("newChildren")),
                             Utils.convertJSONChildrenUpdates((JSONArray) ((JSONObject) jsonChange)
-                                    .get("childrenUpdates"))
+                                    .get("childrenUpdates")),
+                            (String) ((JSONObject) jsonChange).get("strategy")
                     ));
                 }
             }

@@ -20,11 +20,16 @@ public class Baby implements IChild {
     private List<Double> niceScoreHistory;
     private Double assignedBudget;
     private List<Gift> receivedGifts;
+    @JsonIgnore
+    private Double niceScoreBonus;
+    @JsonIgnore
+    private String elf;
 
     public Baby(final Integer id, final String lastName,
                 final String firstName, final Integer age,
                 final String city, final Double niceScore,
-                final List<String> giftsPreferences) {
+                final List<String> giftsPreferences,
+                final Double niceScoreBonus, final String elf) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -36,6 +41,8 @@ public class Baby implements IChild {
         this.niceScoreHistory = new ArrayList<>();
         this.assignedBudget = 0.0;
         this.receivedGifts = new ArrayList<>();
+        this.niceScoreBonus = niceScoreBonus;
+        this.elf = elf;
     }
 
     /**
@@ -43,7 +50,13 @@ public class Baby implements IChild {
      */
     @Override
     public void calculateAverageScore() {
-        this.averageScore = Constants.BABY_AVERAGE;
+        double avg = Constants.BABY_AVERAGE;
+        avg += avg * niceScoreBonus / 100;
+        if (avg > 10.0) {
+            avg = 10.0;
+        }
+        this.averageScore = avg;
+
     }
 
     @Override
@@ -74,7 +87,27 @@ public class Baby implements IChild {
                 + assignedBudget
                 + ", receivedGifts="
                 + receivedGifts
+                + ", niceScoreBonus="
+                + niceScoreBonus
+                + ", elf="
+                + elf
                 + '}';
+    }
+
+    public final Double getNiceScoreBonus() {
+        return niceScoreBonus;
+    }
+
+    public final void setNiceScoreBonus(Double niceScoreBonus) {
+        this.niceScoreBonus = niceScoreBonus;
+    }
+
+    public final String getElf() {
+        return elf;
+    }
+
+    public final void setElf(final String elf) {
+        this.elf = elf;
     }
 
     @Override
