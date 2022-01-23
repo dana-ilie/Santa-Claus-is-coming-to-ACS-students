@@ -23,7 +23,7 @@ public final class Main {
      */
     public static void main(final String[] args) throws IOException {
 
-        for (int testNr = 22; testNr <= Constants.TESTS_NUMBER; testNr++) {
+        for (int testNr = 1; testNr <= Constants.TESTS_NUMBER; testNr++) {
             String inputPath = "tests/test" + testNr + ".json";
             String outputPath = "output/out_" + testNr + ".json";
 

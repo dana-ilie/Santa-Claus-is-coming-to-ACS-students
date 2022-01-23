@@ -1,7 +1,9 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import database.Database;
 import interfaces.IChild;
+import visitors.ChildVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,15 @@ public class Teen implements IChild {
         if (this.averageScore > 10.0) {
             this.averageScore = 10.0;
         }
+    }
+
+    @Override
+    public void accept(ChildVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    public void accept(ChildVisitor visitor, Database database) {
+        visitor.visit(this, database);
     }
 
     @Override

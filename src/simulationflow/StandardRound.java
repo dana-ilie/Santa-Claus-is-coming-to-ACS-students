@@ -9,6 +9,8 @@ import interfaces.ChildrenSortStrategy;
 import interfaces.IChild;
 import updates.AnnualChange;
 import updates.ChildUpdate;
+import visitors.ChildVisitor;
+import visitors.IncrementChildAgeVisitor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,12 +26,17 @@ public class StandardRound {
         IChildFactory childFactory = IChildFactory.getIChildFactory();
         List<IChild> children = new ArrayList<>();
 
+        ChildVisitor incrementAge = new IncrementChildAgeVisitor();
         for (IChild child : database.getChildren()) {
             /*
-             * increment age and remove young adults
+             * increment age
              */
-            child.setAge(child.getAge() + 1);
+            //child.setAge(child.getAge() + 1);
+            child.accept(incrementAge);
         }
+        /*
+         * remove young adults
+         */
         database.getChildren().removeIf(x -> x.getAge() > Constants.TEEN_AGE_LIMIT);
 
 
@@ -106,7 +113,5 @@ public class StandardRound {
 
         InitialRound initialRound = new InitialRound();
         initialRound.executeInitialRound(database);
-
-
     }
 }

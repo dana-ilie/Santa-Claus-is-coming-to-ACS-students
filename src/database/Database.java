@@ -14,6 +14,8 @@ import interfaces.IChild;
 import org.checkerframework.checker.units.qual.C;
 import updates.AnnualChange;
 import updates.ChildUpdate;
+import visitors.CityVisitor;
+import visitors.NiceScoreCityVisitor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -125,8 +127,9 @@ public final class Database {
             }
         }
 
+        CityVisitor niceScoreVisitor = new NiceScoreCityVisitor();
         for (City city : allCities) {
-            city.calculateNiceScoreCity();
+            city.accept(niceScoreVisitor);
         }
 
     }

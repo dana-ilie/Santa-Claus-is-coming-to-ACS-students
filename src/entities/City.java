@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.IChild;
+import visitors.CityVisitor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,6 +18,10 @@ public class City {
         childrenFromCity = new ArrayList<>();
     }
 
+    public void accept(CityVisitor visitor) {
+        visitor.visit(this);
+    }
+
     public String getName() {
         return name;
     }
@@ -29,13 +34,7 @@ public class City {
         return childrenFromCity;
     }
 
-    public void calculateNiceScoreCity() {
-        childrenFromCity.sort(Comparator.comparingInt(IChild::getId));
-
-        Double sum = 0.0;
-        for (IChild child : childrenFromCity) {
-            sum += child.getAverageScore();
-        }
-        niceScoreCity = sum / childrenFromCity.size();
+    public void setNiceScoreCity(Double niceScoreCity) {
+        this.niceScoreCity = niceScoreCity;
     }
 }

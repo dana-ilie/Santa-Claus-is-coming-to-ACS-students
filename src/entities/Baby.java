@@ -2,12 +2,14 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import common.Constants;
+import database.Database;
 import interfaces.IChild;
+import visitors.ChildVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Baby implements IChild {
+public class Baby implements IChild{
     private Integer id;
     private String lastName;
     private String firstName;
@@ -57,6 +59,15 @@ public class Baby implements IChild {
         }
         this.averageScore = avg;
 
+    }
+
+    @Override
+    public void accept(ChildVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    public void accept(ChildVisitor visitor, Database database) {
+        visitor.visit(this, database);
     }
 
     @Override

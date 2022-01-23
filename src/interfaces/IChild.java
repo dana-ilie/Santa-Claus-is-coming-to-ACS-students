@@ -1,9 +1,19 @@
 package interfaces;
 
+import database.Database;
 import entities.Gift;
+import visitors.ChildVisitor;
+
 import java.util.List;
 
 public interface IChild {
+
+    /**
+     * @param visitor child visitor
+     */
+    void accept(ChildVisitor visitor);
+
+    void accept(ChildVisitor visitor, Database database);
 
     /**
      * @return child id
