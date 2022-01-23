@@ -85,19 +85,19 @@ public class ChildrenInputData {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public Double getNiceScoreBonus() {
+    public final Double getNiceScoreBonus() {
         return niceScoreBonus;
     }
 
-    public void setNiceScoreBonus(Double niceScoreBonus) {
+    public final void setNiceScoreBonus(final Double niceScoreBonus) {
         this.niceScoreBonus = niceScoreBonus;
     }
 
-    public String getElf() {
+    public final String getElf() {
         return elf;
     }
 
-    public void setElf(String elf) {
+    public final void setElf(final String elf) {
         this.elf = elf;
     }
 

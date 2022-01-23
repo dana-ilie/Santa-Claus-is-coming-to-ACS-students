@@ -6,7 +6,7 @@ public class AnnualChangesInputData {
     private final List<SantaGiftsInputData> newGifts;
     private List<ChildrenInputData> newChildren;
     private List<ChildUpdateInputData> childrenUpdates;
-    private String strategyType;
+    private final String strategyType;
 
     public AnnualChangesInputData(final Double newSantaBudget,
                                   final List<SantaGiftsInputData> newGifts,
@@ -46,12 +46,8 @@ public class AnnualChangesInputData {
         this.childrenUpdates = childrenUpdates;
     }
 
-    public String getStrategyType() {
+    public final String getStrategyType() {
         return strategyType;
-    }
-
-    public void setStrategyType(String strategyType) {
-        this.strategyType = strategyType;
     }
 
     @Override

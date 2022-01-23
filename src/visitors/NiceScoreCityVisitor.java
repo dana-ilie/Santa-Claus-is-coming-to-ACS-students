@@ -1,13 +1,17 @@
 package visitors;
 
 import entities.City;
+import interfaces.CityVisitor;
 import interfaces.IChild;
 
 import java.util.Comparator;
 
-public class NiceScoreCityVisitor implements CityVisitor{
+public class NiceScoreCityVisitor implements CityVisitor {
+    /**
+     * @param city the city to be visited
+     */
     @Override
-    public void visit(City city) {
+    public void visit(final City city) {
         double niceScoreCity;
         city.getChildrenFromCity().sort(Comparator.comparingInt(IChild::getId));
 

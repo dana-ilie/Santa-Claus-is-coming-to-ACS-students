@@ -1,9 +1,10 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import common.Constants;
 import database.Database;
 import interfaces.IChild;
-import visitors.ChildVisitor;
+import interfaces.ChildVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,18 +59,26 @@ public class Teen implements IChild {
             weightSum += i + 1;
         }
         this.averageScore = scoreSum / weightSum;
-        this.averageScore += this.averageScore * niceScoreBonus / 100;
-        if (this.averageScore > 10.0) {
-            this.averageScore = 10.0;
+        this.averageScore += this.averageScore * niceScoreBonus / Constants.ONE_HUNDRED;
+        if (this.averageScore > Constants.MAX_AVERAGE) {
+            this.averageScore = Constants.MAX_AVERAGE;
         }
     }
 
+    /**
+     * @param visitor child visitor
+     */
     @Override
-    public void accept(ChildVisitor visitor) {
+    public void accept(final ChildVisitor visitor) {
         visitor.visit(this);
     }
 
-    public void accept(ChildVisitor visitor, Database database) {
+    /**
+     * @param visitor  child visitor
+     * @param database the database
+     */
+    @Override
+    public void accept(final ChildVisitor visitor, final Database database) {
         visitor.visit(this, database);
     }
 

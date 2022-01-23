@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import common.Constants;
 import database.Database;
 import interfaces.IChild;
-import visitors.ChildVisitor;
+import interfaces.ChildVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Baby implements IChild{
+public class Baby implements IChild {
     private Integer id;
     private String lastName;
     private String firstName;
@@ -53,20 +53,27 @@ public class Baby implements IChild{
     @Override
     public void calculateAverageScore() {
         double avg = Constants.BABY_AVERAGE;
-        avg += avg * niceScoreBonus / 100;
-        if (avg > 10.0) {
-            avg = 10.0;
+        avg += avg * niceScoreBonus / Constants.ONE_HUNDRED;
+        if (avg > Constants.MAX_AVERAGE) {
+            avg = Constants.MAX_AVERAGE;
         }
         this.averageScore = avg;
-
     }
 
+    /**
+     * @param visitor child visitor
+     */
     @Override
-    public void accept(ChildVisitor visitor) {
+    public void accept(final ChildVisitor visitor) {
         visitor.visit(this);
     }
 
-    public void accept(ChildVisitor visitor, Database database) {
+    /**
+     * @param visitor  child visitor
+     * @param database the database
+     */
+    @Override
+    public void accept(final ChildVisitor visitor, final Database database) {
         visitor.visit(this, database);
     }
 
@@ -109,7 +116,7 @@ public class Baby implements IChild{
         return niceScoreBonus;
     }
 
-    public final void setNiceScoreBonus(Double niceScoreBonus) {
+    public final void setNiceScoreBonus(final Double niceScoreBonus) {
         this.niceScoreBonus = niceScoreBonus;
     }
 

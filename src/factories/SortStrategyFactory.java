@@ -8,6 +8,9 @@ import strategies.NiceScoreSort;
 public class SortStrategyFactory {
     private static SortStrategyFactory sortStrategyFactory = null;
 
+    /**
+     * @return singleton factory
+     */
     public static SortStrategyFactory getSortStrategyFactory() {
         if (sortStrategyFactory == null) {
             sortStrategyFactory = new SortStrategyFactory();
@@ -15,15 +18,17 @@ public class SortStrategyFactory {
         return sortStrategyFactory;
     }
 
-    public ChildrenSortStrategy createStrategy(String strategyType) {
-        switch (strategyType) {
-            case "id":
-                return new IdSort();
-            case "niceScoreCity":
-                return new NiceScoreCitySort();
-            case "niceScore":
-                return new NiceScoreSort();
-        }
-        throw new IllegalArgumentException("Strategy type " + strategyType + "not recognized");
+    /**
+     * @param strategyType type of strategy string
+     * @return a sorting strategy
+     */
+    public ChildrenSortStrategy createStrategy(final String strategyType) {
+        return switch (strategyType) {
+            case "id" -> new IdSort();
+            case "niceScoreCity" -> new NiceScoreCitySort();
+            case "niceScore" -> new NiceScoreSort();
+            default -> throw new IllegalArgumentException("Strategy type "
+                    + strategyType + "not recognized");
+        };
     }
 }

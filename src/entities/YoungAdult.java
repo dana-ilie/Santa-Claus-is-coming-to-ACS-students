@@ -3,7 +3,7 @@ package entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import database.Database;
 import interfaces.IChild;
-import visitors.ChildVisitor;
+import interfaces.ChildVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,12 +54,20 @@ public class YoungAdult implements IChild {
         this.averageScore = -1.0;
     }
 
+    /**
+     * @param visitor child visitor
+     */
     @Override
-    public void accept(ChildVisitor visitor) {
+    public void accept(final ChildVisitor visitor) {
         visitor.visit(this);
     }
 
-    public void accept(ChildVisitor visitor, Database database) {
+    /**
+     * @param visitor  child visitor
+     * @param database the database
+     */
+    @Override
+    public void accept(final ChildVisitor visitor, final Database database) {
         visitor.visit(this, database);
     }
 

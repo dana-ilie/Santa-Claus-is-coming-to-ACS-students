@@ -1,40 +1,42 @@
 package entities;
 
 import interfaces.IChild;
-import visitors.CityVisitor;
+import interfaces.CityVisitor;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class City {
-    private String name;
+    private final String name;
     private Double niceScoreCity;
-    private List<IChild> childrenFromCity;
+    private final List<IChild> childrenFromCity;
 
-    public City(String name) {
+    public City(final String name) {
         this.name = name;
         this.niceScoreCity = 0.0;
         childrenFromCity = new ArrayList<>();
     }
 
-    public void accept(CityVisitor visitor) {
+    /**
+     * @param visitor city visitor
+     */
+    public void accept(final CityVisitor visitor) {
         visitor.visit(this);
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public Double getNiceScoreCity() {
+    public final Double getNiceScoreCity() {
         return niceScoreCity;
     }
 
-    public List<IChild> getChildrenFromCity() {
+    public final List<IChild> getChildrenFromCity() {
         return childrenFromCity;
     }
 
-    public void setNiceScoreCity(Double niceScoreCity) {
+    public final void setNiceScoreCity(final Double niceScoreCity) {
         this.niceScoreCity = niceScoreCity;
     }
 }

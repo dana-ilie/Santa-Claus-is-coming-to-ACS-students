@@ -15,6 +15,10 @@ public final class Constants {
     public static final Integer KID_AGE_LIMIT = 12;
     public static final Integer TEEN_AGE_LIMIT = 18;
     public static final Double MIN_PRICE = 1000000.0;
+    public static final Double MAX_AVERAGE = 10.0;
+    public static final Integer ONE_HUNDRED = 100;
+    public static final Integer BLACK_ELF_BUDGET = 30;
+    public static final Integer PINK_ELF_BUDGET = 30;
 
     private Constants() {
         //constructor for checkstyle

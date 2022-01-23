@@ -11,10 +11,9 @@ import input.SantaGiftsInputData;
 import input.AnnualChangesInputData;
 import interfaces.ChildrenSortStrategy;
 import interfaces.IChild;
-import org.checkerframework.checker.units.qual.C;
 import updates.AnnualChange;
 import updates.ChildUpdate;
-import visitors.CityVisitor;
+import interfaces.CityVisitor;
 import visitors.NiceScoreCityVisitor;
 
 import java.util.ArrayList;
@@ -95,6 +94,9 @@ public final class Database {
         }
     }
 
+    /**
+     * used for adding the children to the cities they are from
+     */
     public void addChildrenToCities() {
         allCities = new ArrayList<>();
         for (IChild child : children) {
@@ -102,7 +104,10 @@ public final class Database {
         }
     }
 
-    public void addChildToCity(IChild child) {
+    /**
+     * @param child the child to be added to the city
+     */
+    public void addChildToCity(final IChild child) {
         boolean isInList = false;
 
         for (City city : allCities) {
@@ -255,7 +260,7 @@ public final class Database {
         return sortStrategy;
     }
 
-    public void setSortStrategy(ChildrenSortStrategy sortStrategy) {
+    public void setSortStrategy(final ChildrenSortStrategy sortStrategy) {
         this.sortStrategy = sortStrategy;
     }
 

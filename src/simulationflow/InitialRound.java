@@ -4,8 +4,13 @@ import common.Constants;
 import database.Database;
 import entities.City;
 import entities.Gift;
+import interfaces.ChildVisitor;
+import interfaces.CityVisitor;
 import interfaces.IChild;
-import visitors.*;
+import visitors.BlackElfChildVisitor;
+import visitors.NiceScoreCityVisitor;
+import visitors.PinkElfChildVisitor;
+import visitors.YellowElfChildVisitor;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -3,11 +3,16 @@ package visitors;
 import common.Constants;
 import database.Database;
 import entities.Gift;
+import interfaces.ChildVisitor;
 import interfaces.IChild;
 
-public class YellowElfChildVisitor implements ChildVisitor{
+public class YellowElfChildVisitor implements ChildVisitor {
+    /**
+     * @param child    the child to be visited
+     * @param database the database
+     */
     @Override
-    public void visit(IChild child, Database database) {
+    public void visit(final IChild child, final Database database) {
         /*
          * check if the child received a gift
          */
@@ -46,7 +51,11 @@ public class YellowElfChildVisitor implements ChildVisitor{
         }
     }
 
+    /**
+     * @param child the child to be visited
+     */
     @Override
-    public void visit(IChild child) {
+    public void visit(final IChild child) {
+        System.out.println("YellowElfChildVisitor");
     }
 }

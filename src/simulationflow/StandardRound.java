@@ -9,7 +9,7 @@ import interfaces.ChildrenSortStrategy;
 import interfaces.IChild;
 import updates.AnnualChange;
 import updates.ChildUpdate;
-import visitors.ChildVisitor;
+import interfaces.ChildVisitor;
 import visitors.IncrementChildAgeVisitor;
 
 import java.util.ArrayList;
@@ -31,7 +31,6 @@ public class StandardRound {
             /*
              * increment age
              */
-            //child.setAge(child.getAge() + 1);
             child.accept(incrementAge);
         }
         /*
@@ -47,7 +46,7 @@ public class StandardRound {
         /*
          * sort children list by id
          */
-        //children.sort(Comparator.comparingInt(IChild::getId));
+        children.sort(Comparator.comparingInt(IChild::getId));
         database.setChildren(children);
         database.addChildrenToCities();
 

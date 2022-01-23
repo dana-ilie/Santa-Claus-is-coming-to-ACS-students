@@ -1,17 +1,27 @@
 package visitors;
 
+import common.Constants;
 import database.Database;
+import interfaces.ChildVisitor;
 import interfaces.IChild;
 
-public class PinkElfChildVisitor implements ChildVisitor{
+public class PinkElfChildVisitor implements ChildVisitor {
+    /**
+     * @param child the child to be visited
+     */
     @Override
-    public void visit(IChild child) {
+    public void visit(final IChild child) {
         Double budget = child.getAssignedBudget();
-        budget = budget + budget * 30 / 100;
+        budget = budget + budget * Constants.PINK_ELF_BUDGET / Constants.ONE_HUNDRED;
         child.setAssignedBudget(budget);
     }
 
+    /**
+     * @param child    the child to be visited
+     * @param database the database
+     */
     @Override
-    public void visit(IChild child, Database database) {
+    public void visit(final IChild child, final Database database) {
+        System.out.println("PinkElfChildVisitor");
     }
 }

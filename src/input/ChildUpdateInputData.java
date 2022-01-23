@@ -40,11 +40,11 @@ public class ChildUpdateInputData {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public String getElf() {
+    public final String getElf() {
         return elf;
     }
 
-    public void setElf(String elf) {
+    public final void setElf(final String elf) {
         this.elf = elf;
     }
 

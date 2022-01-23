@@ -40,11 +40,11 @@ public class SantaGiftsInputData {
         this.category = category;
     }
 
-    public Integer getQuantity() {
+    public final Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public final void setQuantity(final Integer quantity) {
         this.quantity = quantity;
     }
 

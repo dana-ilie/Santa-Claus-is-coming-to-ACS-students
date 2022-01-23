@@ -2,7 +2,6 @@ package interfaces;
 
 import database.Database;
 import entities.Gift;
-import visitors.ChildVisitor;
 
 import java.util.List;
 
@@ -13,6 +12,10 @@ public interface IChild {
      */
     void accept(ChildVisitor visitor);
 
+    /**
+     * @param visitor child visitor
+     * @param database the database
+     */
     void accept(ChildVisitor visitor, Database database);
 
     /**
@@ -138,7 +141,7 @@ public interface IChild {
     /**
      * @param niceScoreBonus nice score bonus to be set
      */
-    void setNiceScoreBonus(final Double niceScoreBonus);
+    void setNiceScoreBonus(Double niceScoreBonus);
 
     /**
      * @return type of elf
@@ -148,6 +151,6 @@ public interface IChild {
     /**
      * @param elf type of elf
      */
-    void setElf(final String elf);
+    void setElf(String elf);
 
 }

@@ -10,7 +10,7 @@ public class AnnualChange {
     private List<Gift> newGifts;
     private List<IChild> newChildren;
     private List<ChildUpdate> childrenUpdates;
-    private String strategyType;
+    private final String strategyType;
 
     public AnnualChange(final Double newSantaBudget,
                         final List<Gift> newGifts,
@@ -70,11 +70,7 @@ public class AnnualChange {
         this.childrenUpdates = childrenUpdates;
     }
 
-    public String getStrategyType() {
+    public final String getStrategyType() {
         return strategyType;
-    }
-
-    public void setStrategyType(String strategyType) {
-        this.strategyType = strategyType;
     }
 }
